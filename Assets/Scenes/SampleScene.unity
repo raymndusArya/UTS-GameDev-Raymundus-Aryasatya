@@ -418,7 +418,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a087f32d4852a824fb42eae187dad65d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryManager
-  inventoryCanvas: {fileID: 937462891}
+  InventoryCanvas: {fileID: 937462891}
+  slotCount: 16
+  itemSlot: []
 --- !u!4 &370658990
 Transform:
   m_ObjectHideFlags: 0
@@ -1374,7 +1376,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 873867193}
-  - component: {fileID: 873867192}
+  - component: {fileID: 873867194}
   m_Layer: 0
   m_Name: Sonar
   m_TagString: Untagged
@@ -1382,18 +1384,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &873867192
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 873867191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40a675fe7ebcd1443945449f74c837e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PemancarEvent
 --- !u!4 &873867193
 Transform:
   m_ObjectHideFlags: 0
@@ -1409,6 +1399,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &873867194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873867191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40a675fe7ebcd1443945449f74c837e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PemancarEvent
 --- !u!1 &919368468
 GameObject:
   m_ObjectHideFlags: 0
@@ -2176,7 +2178,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1200699434}
-  - component: {fileID: 1200699433}
+  - component: {fileID: 1200699435}
   m_Layer: 0
   m_Name: Delegate
   m_TagString: Untagged
@@ -2184,18 +2186,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1200699433
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1200699432}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 553c76fac350c8042a29b750cafe2d67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::belajarDelegate
 --- !u!4 &1200699434
 Transform:
   m_ObjectHideFlags: 0
@@ -2211,6 +2201,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1200699435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200699432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 553c76fac350c8042a29b750cafe2d67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BelajarDelegate
 --- !u!1 &1218601870
 GameObject:
   m_ObjectHideFlags: 0
@@ -2629,7 +2631,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1397062343}
-  - component: {fileID: 1397062342}
+  - component: {fileID: 1397062344}
   m_Layer: 0
   m_Name: Penerima
   m_TagString: Untagged
@@ -2637,18 +2639,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1397062342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1397062341}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9fc848958ffcb44485fa7c2b702fc09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PenerimaEvent
 --- !u!4 &1397062343
 Transform:
   m_ObjectHideFlags: 0
@@ -2664,6 +2654,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1397062344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397062341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9fc848958ffcb44485fa7c2b702fc09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PenerimaEvent
 --- !u!1 &1420753120
 GameObject:
   m_ObjectHideFlags: 0
@@ -3995,8 +3997,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   skor: 0
-  kecepatan: 6
+  kecepatan: 5.88
   gameManager: {fileID: 185191683}
+  coinDetails: {fileID: 11400000, guid: 8b97fef8185b1194695bb9fc51199791, type: 2}
 --- !u!114 &2128964914
 MonoBehaviour:
   m_ObjectHideFlags: 0

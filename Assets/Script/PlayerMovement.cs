@@ -7,6 +7,20 @@ public class PlayerMovement : MonoBehaviour
     public float kecepatan = 5f;
     private Vector2 arahGerak;
     public GameManager gameManager;
+    [SerializeField] private ItemDetails coinDetails;
+
+    private InventoryManager inventoryManager;
+
+    void Awake()
+    {
+        inventoryManager = FindAnyObjectByType<InventoryManager>();
+
+        if (coinDetails == null)
+        {
+            coinDetails = Resources.Load<ItemDetails>("Koin");
+        }
+    }
+
     void OnMove(InputValue value)
     {
         arahGerak = value.Get<Vector2>();
@@ -21,14 +35,23 @@ public class PlayerMovement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        // TODO: cek apakah yang disentuh punya tag "Coin"
         if (other.CompareTag("Koin"))
         {
-            // TODO: hancurkan koin yang tersentuh
+            if (coinDetails == null)
+            {
+                Debug.LogError("Coin ItemDetails belum diatur pada PlayerMovement.", this);
+                return;
+            }
+
+            if (inventoryManager == null)
+            {
+                Debug.LogError("InventoryManager tidak ditemukan di scene.", this);
+                return;
+            }
+
+            inventoryManager.AddItem(coinDetails);
             Destroy(other.gameObject);
-            // TODO: tambah skor sebanyak 1
             skor++;
-            // TODO: tampilkan skor ke Console
             Debug.Log("Total Skor : " + skor);
             gameManager.AmbilKoin();
         }

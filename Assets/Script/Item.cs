@@ -4,21 +4,14 @@ public class Item : MonoBehaviour
 {
     [SerializeField] private ItemDetails ItemDetails;
     private GrabableItem itemCollector;
-    
+
     void Awake()
     {
-        foreach (MonoBehaviour component in FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None))
-        {
-            if (component is GrabableItem collector)
-            {
-                itemCollector = collector;
-                break;
-            }
-        }
+        itemCollector = FindAnyObjectByType<InventoryManager>();
 
         if (itemCollector == null)
         {
-            Debug.LogError("No active component implementing GrabableItem was found in the scene.", this);
+            Debug.LogError("InventoryManager tidak ditemukan di scene.", this);
         }
     }
 

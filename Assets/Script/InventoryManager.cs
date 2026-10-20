@@ -10,31 +10,24 @@ public class InventoryManager : MonoBehaviour, GrabableItem
     private bool InventoryActive;
     public ItemSlot[] itemSlot;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         CreateSlots();
         InventoryCanvas.SetActive(false);
         inventoryAction = InputSystem.actions.FindAction("Inventory");
         InventoryActive = false;
-
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (inventoryAction.triggered && InventoryCanvas != null && InventoryActive == false)
+        if (inventoryAction == null || InventoryCanvas == null) return;
+
+        if (inventoryAction.triggered)
         {
-            InventoryActive = true;
-            Time.timeScale = 0f;
-            Debug.Log("Inventory is active");
-            InventoryCanvas.SetActive(true);
-        } else if (inventoryAction.triggered && InventoryCanvas != null && InventoryActive == true)
-        {
-            InventoryActive = false;
-            Time.timeScale = 1f;
-            Debug.Log("Inventory is deactivated");
-            InventoryCanvas.SetActive(false);
+            InventoryActive = !InventoryActive;
+            Time.timeScale = InventoryActive ? 0f : 1f;
+            InventoryCanvas.SetActive(InventoryActive);
+            Debug.Log(InventoryActive ? "Inventory is active" : "Inventory is deactivated");
         }
     }
 
@@ -49,12 +42,18 @@ public class InventoryManager : MonoBehaviour, GrabableItem
             return;
         }
 
-        // Put the slots inside the GridLayoutGroup container (InventorySlots), if there is one
         Transform parent = InventoryCanvas.transform;
         GridLayoutGroup grid = InventoryCanvas.GetComponentInChildren<GridLayoutGroup>(true);
         if (grid != null)
         {
             parent = grid.transform;
+
+            for (int i = grid.transform.childCount - 1; i >= 0; i--)
+            {
+                GameObject placeholder = grid.transform.GetChild(i).gameObject;
+                placeholder.SetActive(false);
+                Destroy(placeholder);
+            }
         }
 
         itemSlot = new ItemSlot[slotCount];
@@ -66,6 +65,12 @@ public class InventoryManager : MonoBehaviour, GrabableItem
 
     public void AddItem(ItemDetails item)
     {
+        if (item == null)
+        {
+            Debug.LogError("Cannot add a null item to the inventory.", this);
+            return;
+        }
+
         Debug.Log("Item added to inventory: " + item.ItemName + " Quantity: " + item.Quantity);
 
         if (itemSlot == null || itemSlot.Length == 0)
@@ -74,36 +79,29 @@ public class InventoryManager : MonoBehaviour, GrabableItem
             return;
         }
 
-        // for (int i = 0; i < itemSlot.Length; i++)
-        // {
-        //     if (!itemSlot[i].isFull)
-        //     {
-        //         itemSlot[i].AddItem(item);
-        //         return;
-        //     }
-        // }
-
-        // Logic to check if item already exists in the inventory and can be stacked
+        int remaining = item.Quantity;
         for (int i = 0; i < itemSlot.Length; i++)
         {
-            if (itemSlot[i].CanStackWith(item.ItemName))
+            if (itemSlot[i] != null && itemSlot[i].IsEmpty && itemSlot[i].AddItem(item))
             {
-                itemSlot[i].AddQuantity(item.Quantity);
-                return;
+                remaining--;
+                if (remaining <= 0) return;
             }
         }
 
-        // Logic to add the item to an empty slot if it cannot be stacked
-        for (int i = 0; i < itemSlot.Length; i++)
-        {
-            if (!itemSlot[i].isFull)
-            {
-                itemSlot[i].AddItem(item);
-                return;
-            }
-        }
+        Debug.LogWarning("Inventory is full, " + remaining + "x '" + item.ItemName + "' was lost.");
+    }
 
-        Debug.LogWarning("Inventory is full, '" + item.ItemName + "' was lost.");
+    // Total jumlah satu jenis item di semua slot (berguna untuk HUD koin)
+    public int GetTotal(string itemName)
+    {
+        int total = 0;
+        foreach (ItemSlot slot in itemSlot)
+        {
+            if (!slot.IsEmpty && slot.itemName == itemName)
+                total += slot.itemQuantity;
+        }
+        return total;
     }
 
     public void DesselectAllSlot()
