@@ -5,6 +5,7 @@ UTS Game Dev.
 Nama : Raymundus Aryasatya Putra Widyawan.
 Absen : 35.
 Kelas : 11 PPLG 2.
+<<<<<<< HEAD
 =======
 # UTS-GameDev
 
@@ -100,3 +101,7 @@ For open source projects, say how it is licensed.
 ## Project status
 If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
 >>>>>>> 1bd248747a46496107fecbba0db1d4c4270544a8
+=======
+
+Default branch : main
+>>>>>>> 242f74a505e177fc7eff7937af1c599dd456b773
