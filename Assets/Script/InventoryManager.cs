@@ -80,11 +80,21 @@ public class InventoryManager : MonoBehaviour, GrabableItem
         }
 
         int remaining = item.Quantity;
+
         for (int i = 0; i < itemSlot.Length; i++)
         {
-            if (itemSlot[i] != null && itemSlot[i].IsEmpty && itemSlot[i].AddItem(item))
+            if (itemSlot[i] != null && itemSlot[i].CanStackWith(item.ItemName))
             {
-                remaining--;
+                remaining = itemSlot[i].AddQuantity(remaining);
+                if (remaining <= 0) return;
+            }
+        }
+
+        for (int i = 0; i < itemSlot.Length; i++)
+        {
+            if (itemSlot[i] != null && itemSlot[i].IsEmpty)
+            {
+                remaining = itemSlot[i].AddItem(item, remaining);
                 if (remaining <= 0) return;
             }
         }

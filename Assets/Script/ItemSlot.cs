@@ -14,13 +14,11 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     // Item Slot
     [SerializeField] private TMP_Text quantityText;
     [SerializeField] private Image itemImage;
-
+    [SerializeField] private int maxStackSize = 99;
     // Selected Item
     [SerializeField] public GameObject selectedPanel;
     public bool isItemSelected;
-
     public InventoryManager inventoryManager;
-
     public bool IsEmpty => itemQuantity <= 0;
 
     private void Awake()
@@ -29,19 +27,36 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         RefreshUI();
     }
 
-    public bool AddItem(ItemDetails item)
+    public int AddItem(ItemDetails item, int amount)
     {
-        if (item == null || !IsEmpty)
+        if (item == null || !IsEmpty || amount <= 0)
         {
-            return false;
+            return amount;
         }
 
         itemName = item.ItemName;
         itemIcon = item.ItemIcon;
-        itemQuantity = 1;
-        isFull = true;
+        itemQuantity = 0;
+        isFull = false;
+        return AddQuantity(amount);
+    }
+
+    public bool CanStackWith(string otherItemName)
+    {
+        return !IsEmpty && !isFull && itemName == otherItemName;
+    }
+
+    public int AddQuantity(int amount)
+    {
+        int space = Mathf.Max(0, maxStackSize - itemQuantity);
+        int added = Mathf.Min(amount, space);
+        int leftover = amount - added;
+
+        itemQuantity += added;
+        isFull = itemQuantity >= maxStackSize;
         RefreshUI();
-        return true;
+
+        return leftover;
     }
 
     private void RefreshUI()

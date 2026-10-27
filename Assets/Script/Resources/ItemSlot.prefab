@@ -232,6 +232,7 @@ MonoBehaviour:
   isFull: 0
   quantityText: {fileID: 2916124170800843951}
   itemImage: {fileID: 5434517272595092600}
+  maxStackSize: 99
   selectedPanel: {fileID: 6557103572779585214}
   isItemSelected: 0
   inventoryManager: {fileID: 0}

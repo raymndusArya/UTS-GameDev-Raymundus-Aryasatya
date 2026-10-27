@@ -400,7 +400,7 @@ GameObject:
   - component: {fileID: 370658990}
   - component: {fileID: 370658989}
   m_Layer: 0
-  m_Name: InventoryAction
+  m_Name: InventoryManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1803,6 +1803,7 @@ GameObject:
   - component: {fileID: 1059688730}
   - component: {fileID: 1059688729}
   - component: {fileID: 1059688728}
+  - component: {fileID: 1059688731}
   m_Layer: 0
   m_Name: Emerald1
   m_TagString: Koin
@@ -1929,6 +1930,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1059688731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059688727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e606fd2579cc5124196530a10eb671b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Item
+  ItemDetails: {fileID: 11400000, guid: 8b97fef8185b1194695bb9fc51199791, type: 2}
 --- !u!1 &1175932578
 GameObject:
   m_ObjectHideFlags: 0
@@ -2677,6 +2691,7 @@ GameObject:
   - component: {fileID: 1420753123}
   - component: {fileID: 1420753122}
   - component: {fileID: 1420753121}
+  - component: {fileID: 1420753124}
   m_Layer: 0
   m_Name: Emerald4
   m_TagString: Koin
@@ -2803,6 +2818,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1420753124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420753120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e606fd2579cc5124196530a10eb671b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Item
+  ItemDetails: {fileID: 11400000, guid: 8b97fef8185b1194695bb9fc51199791, type: 2}
 --- !u!1 &1657798566
 GameObject:
   m_ObjectHideFlags: 0
@@ -2922,6 +2950,7 @@ GameObject:
   - component: {fileID: 1674472415}
   - component: {fileID: 1674472414}
   - component: {fileID: 1674472413}
+  - component: {fileID: 1674472416}
   m_Layer: 0
   m_Name: Emerald2
   m_TagString: Koin
@@ -3048,6 +3077,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1674472416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674472412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e606fd2579cc5124196530a10eb671b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Item
+  ItemDetails: {fileID: 11400000, guid: 8b97fef8185b1194695bb9fc51199791, type: 2}
 --- !u!1 &1682391614
 GameObject:
   m_ObjectHideFlags: 0
@@ -3178,6 +3220,7 @@ GameObject:
   - component: {fileID: 1909339154}
   - component: {fileID: 1909339156}
   - component: {fileID: 1909339155}
+  - component: {fileID: 1909339157}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -3242,6 +3285,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1909339153}
   m_CullTransparentMesh: 1
+--- !u!114 &1909339157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1909339153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fde0d10992c096e46b5d04b8b467f657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemSlot
+  itemName: 
+  itemQuantity: 0
+  itemIcon: {fileID: 0}
+  isFull: 0
+  quantityText: {fileID: 0}
+  itemImage: {fileID: 0}
+  maxStackSize: 99
+  selectedPanel: {fileID: 0}
+  isItemSelected: 0
+  inventoryManager: {fileID: 0}
 --- !u!1 &1949589118
 GameObject:
   m_ObjectHideFlags: 0
@@ -3253,6 +3318,7 @@ GameObject:
   - component: {fileID: 1949589121}
   - component: {fileID: 1949589120}
   - component: {fileID: 1949589119}
+  - component: {fileID: 1949589122}
   m_Layer: 0
   m_Name: Emerald3
   m_TagString: Koin
@@ -3379,6 +3445,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1949589122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1949589118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e606fd2579cc5124196530a10eb671b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Item
+  ItemDetails: {fileID: 11400000, guid: 8b97fef8185b1194695bb9fc51199791, type: 2}
 --- !u!1 &2003607513
 GameObject:
   m_ObjectHideFlags: 0
@@ -3583,6 +3662,7 @@ GameObject:
   - component: {fileID: 2106861042}
   - component: {fileID: 2106861041}
   - component: {fileID: 2106861040}
+  - component: {fileID: 2106861043}
   m_Layer: 0
   m_Name: Emerald5
   m_TagString: Koin
@@ -3709,6 +3789,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2106861043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2106861039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e606fd2579cc5124196530a10eb671b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Item
+  ItemDetails: {fileID: 11400000, guid: 8b97fef8185b1194695bb9fc51199791, type: 2}
 --- !u!1 &2128964907
 GameObject:
   m_ObjectHideFlags: 0
