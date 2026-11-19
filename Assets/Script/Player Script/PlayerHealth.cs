@@ -53,4 +53,9 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     {
         return currentHp;
     }
+
+    public int GetMaxHp()
+{
+    return maxHp;
+}
 }

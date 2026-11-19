@@ -6,6 +6,7 @@ public class InventoryManager : MonoBehaviour, GrabableItem
 {
     InputAction inventoryAction;
     [SerializeField] private GameObject InventoryCanvas;
+    [SerializeField] private ItemDetailsPanel itemDetailsPanel;
     [SerializeField] private int slotCount = 16;
     private bool InventoryActive;
     public ItemSlot[] itemSlot;
@@ -121,5 +122,10 @@ public class InventoryManager : MonoBehaviour, GrabableItem
             slot.isItemSelected = false;
             slot.selectedPanel.SetActive(false);
         }
+    }
+
+    public void ShowItemDetails(ItemDetails item, int quantity)
+    {
+        itemDetailsPanel.Show(item, quantity);
     }
 }

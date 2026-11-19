@@ -9,6 +9,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     public string itemName;
     public int itemQuantity;
     public Sprite itemIcon;
+    private ItemDetails itemDetails;
     public bool isFull;
 
     // Item Slot
@@ -36,6 +37,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
 
         itemName = item.ItemName;
         itemIcon = item.ItemIcon;
+        itemDetails = item;
         itemQuantity = 0;
         isFull = false;
         return AddQuantity(amount);
@@ -73,7 +75,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         if (quantityText != null)
         {
             quantityText.text = hasItem ? itemQuantity.ToString() : string.Empty;
-            quantityText.enabled = hasItem;
+            quantityText.enabled = true;
         }
     }
 
@@ -96,10 +98,18 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         inventoryManager.DesselectAllSlot();
         selectedPanel.SetActive(true);
         isItemSelected = true;
+
+        if (IsEmpty || itemDetails == null)
+        {
+            inventoryManager.ShowItemDetails(null, 0);
+            return;
+        }
+
+        inventoryManager.ShowItemDetails(itemDetails, itemQuantity);
     }
 
     private void RightClick()
     {
-        Debug.Log("Right Clicked on " + itemName);
+        Debug.Log("Rig/ht Clicked on " + itemName);
     }
 }

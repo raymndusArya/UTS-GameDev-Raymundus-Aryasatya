@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97aebb33fad6a8844a9edc1b35a825e6, type: 3}
-  m_Name: Koin
+  m_Name: Potion2
   m_EditorClassIdentifier: Assembly-CSharp::ItemDetails
-  itemName: Coin
+  itemName: HP Poton
   quantity: 1
-  itemIcon: {fileID: 14333003631960633, guid: 3273ec34bec54ce4b97d3a046dab3f3d, type: 3}
+  itemIcon: {fileID: 1009049853055315898, guid: 1f8bb00700bbe174c805bd79626d7f17, type: 3}
+  description: Add HP Potion
